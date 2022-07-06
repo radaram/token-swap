@@ -57,7 +57,7 @@ let currentSwapTokenA = 1000000;
 let currentSwapTokenB = 1000000;
 
 const SWAP_AMOUNT_IN = 100000;
-const SWAP_AMOUNT_OUT = SWAP_PROGRAM_OWNER_FEE_ADDRESS ? 90661 : 90674;
+const SWAP_AMOUNT_OUT = 90661;
 
  const connection = new Connection(clusterApiUrl("devnet"));
 //const connection = new Connection("http://127.0.0.1:8899", "confirmed");
@@ -170,7 +170,13 @@ async function createTokenAccounts() {
     );
 
     console.log("Creating token B");
-    mintB = await createMint(connection, owner, owner.publicKey, null, 2);
+    mintB = await createMint(
+        connection, 
+        owner, 
+        owner.publicKey, 
+        null, 
+        2
+    );
     console.log("mintB:", mintB.toString());
 
     tokenAccountB = await createAccount(
